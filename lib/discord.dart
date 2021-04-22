@@ -12,7 +12,7 @@ class DiscordAuth extends Visa {
   final baseUrl = 'https://discord.com/api/oauth2/authorize';
 
   @override
-  SimpleAuth visa;
+  late SimpleAuth visa;
 
   DiscordAuth() {
     visa = SimpleAuth(
@@ -46,7 +46,7 @@ class DiscordAuth extends Visa {
   @override
   AuthData authData(
       Map<String, dynamic> profileJson, Map<String, String> oauthData) {
-    final String accessToken = oauthData[OAuth.TOKEN_KEY];
+    final String accessToken = oauthData[OAuth.TOKEN_KEY]!;
     final String userId = profileJson['id'] as String;
     final String avatar = profileJson['avatar'] as String;
     final String profileImgUrl = 'https://cdn.discordapp.com/'

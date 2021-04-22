@@ -12,7 +12,7 @@ class TwitchAuth extends Visa {
   final baseUrl = 'https://id.twitch.tv/oauth2/authorize';
 
   @override
-  SimpleAuth visa;
+  late SimpleAuth visa;
 
   TwitchAuth() {
     visa = SimpleAuth(
@@ -31,7 +31,7 @@ class TwitchAuth extends Visa {
           var profileResponse = await http.get(Uri.parse(baseProfileUrl),
               headers: {
                 'Authorization': 'Bearer $token',
-                'Client-Id': oauthData['clientID']
+                'Client-Id': oauthData['clientID']!
               });
           var profileJson = json.decode(profileResponse.body);
           if (debugMode)
@@ -46,7 +46,7 @@ class TwitchAuth extends Visa {
   /// to build an [AuthData] object.
   AuthData authData(
       Map<String, dynamic> profileJson, Map<String, String> oauthData) {
-    final String accessToken = oauthData[OAuth.TOKEN_KEY];
+    final String accessToken = oauthData[OAuth.TOKEN_KEY]!;
     Map<String, dynamic> user = profileJson['data'][0];
 
     return AuthData(

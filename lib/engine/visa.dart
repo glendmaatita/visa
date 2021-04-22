@@ -5,14 +5,14 @@ import 'simple-auth.dart';
 /// Visa abstract class
 abstract class Visa {
   /// a [SimpleAuth] instance
-  SimpleAuth visa;
+  late SimpleAuth visa;
 
   /// Debug mode?
   bool debugMode = false;
 
   /// Sets debugMode and visa.debugMode
   /// to the given value (debugMode)
-  set debug(bool debugMode){
+  set debug(bool debugMode) {
     this.debugMode = debugMode;
     this.visa.debugMode = debugMode;
   }

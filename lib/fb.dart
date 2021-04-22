@@ -12,7 +12,7 @@ class FacebookAuth extends Visa {
   final baseUrl = 'https://www.facebook.com/v8.0/dialog/oauth';
 
   @override
-  SimpleAuth visa;
+  late SimpleAuth visa;
 
   FacebookAuth() {
     visa = SimpleAuth(

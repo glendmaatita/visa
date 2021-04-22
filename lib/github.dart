@@ -12,7 +12,7 @@ class GithubAuth extends Visa {
   final baseUrl = 'https://github.com/login/oauth/authorize';
 
   @override
-  SimpleAuth visa;
+  late SimpleAuth visa;
 
   GithubAuth() {
     visa = SimpleAuth(
@@ -41,7 +41,7 @@ class GithubAuth extends Visa {
             debug('In GithubAuth -> Returned Profile Json: $profileJson');
 
           List<dynamic> emailJson = json.decode(emailResponse.body);
-          String emailString;
+          String emailString = "";
 
           for (var email in emailJson) {
             if (email['primary']) {
